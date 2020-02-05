@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:layout_margin="3dp"
+    android:background="@drawable/corners_item_bg">
+
+    <ImageView
+        android:id="@+id/project_list_iv"
+        android:layout_width="100dp"
+        android:layout_height="160dp"
+        android:padding="3dp"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_margin="3dp"
+        android:layout_toRightOf="@+id/project_list_iv"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/project_list_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/user"
+            android:drawablePadding="0dp"
+            android:gravity="center_vertical"
+            android:text="gs666" />
+
+        <TextView
+            android:id="@+id/project_list_title"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="一个模仿企鹅 FM 界面的 Android 应用喜马拉雅Kotlin。完全使用 Kotlin 开发。"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/project_list_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="3"
+            android:paddingTop="5dp"
+            android:text="一个模仿企鹅 FM 界面的Android 应用喜马拉雅Kotlin。完全使用 Kotlin 开发。有声资源和播放器由喜马拉雅 SDK 提供。 主要功能：
+1,在线播放专辑点播
+2,在线播放国家/省/市广播电台
+3,最近收听
+4,搜索节目/专辑/广播（包括热搜词）" />
+
+        <TextView
+            android:id="@+id/project_list_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|left"
+            android:text="2019-11-07 10:43" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp"
+        android:src="@drawable/heart_gray" />
+
+
+</RelativeLayout>
