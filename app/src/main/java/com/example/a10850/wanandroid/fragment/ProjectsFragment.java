@@ -3,18 +3,12 @@ package com.example.a10850.wanandroid.fragment;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.a10850.wanandroid.R;
 import com.example.a10850.wanandroid.entity.ProjectBean;
 import com.example.a10850.wanandroid.utils.RetrofitUtil;
-import com.example.common.adapter.SubPagerAdapter;
 import com.example.common.adapter.SubStatePagerAdapter;
 import com.example.common.base.BaseFragment;
 import com.example.common.base.LazyLoadFragment;
@@ -23,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,7 +24,7 @@ import retrofit2.Response;
 /***
  * 创建时间：2019/12/10 21:53
  * 创建人：10850
- * 功能描述：
+ * 功能描述：问题1：切换后会不出数据
  */
 public class ProjectsFragment extends LazyLoadFragment {
 
@@ -64,7 +56,7 @@ public class ProjectsFragment extends LazyLoadFragment {
     @Override
     protected void initView() {
         mAdapter = new SubStatePagerAdapter(getFragmentManager());
-        mProjectVp.setOffscreenPageLimit(mFragments.size());
+//        mProjectVp.setOffscreenPageLimit(mFragments.size());
         //1、将tablayout与viewpager关联起来
         mProjectTab.setupWithViewPager(mProjectVp);
         //设置阴影高度
@@ -88,7 +80,9 @@ public class ProjectsFragment extends LazyLoadFragment {
                 mList.addAll(data);
                 for (int i = 0; i < data.size(); i++) {
                     mTitles.add(data.get(i).getName());
-                    mFragments.add(new PerProjectFragment().newInstance(data.get(i).getId()));
+//                    mFragments.add(new PerProjectFragment().newInstance("NORMAL", data.get(i).getId(),
+//                            data.get(i).getName(), i));
+                    mFragments.add(new PerProjectFragment().newInstance("NORMAL", data.get(i).getId()));
                 }
                 mAdapter.setData(mFragments, mTitles);
                 mProjectVp.setAdapter(mAdapter);

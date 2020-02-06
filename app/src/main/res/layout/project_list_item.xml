@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="150dp"
     android:layout_margin="3dp"
     android:background="@drawable/corners_item_bg">
 
@@ -23,7 +23,7 @@
         <TextView
             android:id="@+id/project_list_author"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:drawableLeft="@mipmap/user"
             android:drawablePadding="0dp"
             android:gravity="center_vertical"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:maxLines="3"
-            android:paddingTop="5dp"
+            android:paddingTop="3dp"
             android:text="一个模仿企鹅 FM 界面的Android 应用喜马拉雅Kotlin。完全使用 Kotlin 开发。有声资源和播放器由喜马拉雅 SDK 提供。 主要功能：
 1,在线播放专辑点播
 2,在线播放国家/省/市广播电台
@@ -62,12 +62,24 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/project_list_collect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:padding="5dp"
         android:src="@drawable/heart_gray" />
+
+    <TextView
+        android:id="@+id/project_list_chaptername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/project_list_collect"
+        android:gravity="center_vertical|left"
+        android:padding="5dp"
+        android:text="跨平台应用"
+        android:textColor="@color/blue" />
 
 
 </RelativeLayout>

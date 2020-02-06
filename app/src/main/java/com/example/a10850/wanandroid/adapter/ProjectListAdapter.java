@@ -1,8 +1,12 @@
 package com.example.a10850.wanandroid.adapter;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -19,8 +23,22 @@ import java.util.List;
  */
 public class ProjectListAdapter extends BaseQuickAdapter<ProjectListBean.DataBean.DatasBean, BaseViewHolder> {
 
+    private String mType;
+    private Context mContext;
+
     public ProjectListAdapter(int layoutResId, @Nullable List<ProjectListBean.DataBean.DatasBean> data) {
         super(layoutResId, data);
+    }
+
+    public ProjectListAdapter(int layoutResId, @Nullable List<ProjectListBean.DataBean.DatasBean> data, String type) {
+        super(layoutResId, data);
+        this.mType = type;
+    }
+
+    public ProjectListAdapter(int layoutResId, @Nullable List<ProjectListBean.DataBean.DatasBean> data, Context context, String type) {
+        super(layoutResId, data);
+        this.mContext = context;
+        this.mType = type;
     }
 
     public ProjectListAdapter(@Nullable List<ProjectListBean.DataBean.DatasBean> data) {
@@ -38,5 +56,26 @@ public class ProjectListAdapter extends BaseQuickAdapter<ProjectListBean.DataBea
                 .setText(R.id.project_list_title, item.getTitle())
                 .setText(R.id.project_list_desc, item.getDesc())
                 .setText(R.id.project_list_time, item.getNiceDate());
+
+        if (item.isCollect())
+            helper.setImageResource(R.id.project_list_collect, R.drawable.heart_red);
+        else
+            helper.setImageResource(R.id.project_list_collect, R.drawable.heart_gray);
+
+
+        if ("NEWEST".equals(mType))
+            helper.setGone(R.id.project_list_chaptername, true).setText(R.id.project_list_chaptername, item.getChapterName());
+        else
+            helper.setGone(R.id.project_list_chaptername, false);
+
+        Drawable drawable = mContext.getResources().getDrawable(R.mipmap.user);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+//        drawable.setBounds(0, 0, 10, 10);
+
+        TextView view = helper.getView(R.id.project_list_author);
+        view.setCompoundDrawables(drawable, null, null, null);
+
+        helper.addOnClickListener(R.id.project_list_chaptername);
+
     }
 }

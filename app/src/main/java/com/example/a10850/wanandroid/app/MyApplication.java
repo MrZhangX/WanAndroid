@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.example.a10850.wanandroid.R;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -12,6 +14,7 @@ import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+
 
 /***
  * 创建时间：2020/2/4 10:16
@@ -39,5 +42,12 @@ public class MyApplication extends Application {
             }
         });
     }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Logger.addLogAdapter(new AndroidLogAdapter());
+    }
+
 
 }

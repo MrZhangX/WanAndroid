@@ -9,8 +9,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.a10850.wanandroid.R;
 import com.example.a10850.wanandroid.entity.ContentBean;
-import com.example.a10850.wanandroid.entity.ContentListBean;
-import com.google.gson.internal.LinkedTreeMap;
 
 import java.util.List;
 

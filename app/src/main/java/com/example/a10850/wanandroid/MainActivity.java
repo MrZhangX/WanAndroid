@@ -4,9 +4,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.a10850.wanandroid.fragment.HomeFragment;
 import com.example.a10850.wanandroid.fragment.MainFragment;
 import com.example.a10850.wanandroid.fragment.MineFragment;
 import com.example.a10850.wanandroid.fragment.ProjectsFragment;
@@ -125,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private void initFragment() {
         mFragments = new ArrayList<>();
-        mFragments.add(new MainFragment().newInstance("首页"));
+        mFragments.add(new HomeFragment());
+//        mFragments.add(new MainFragment().newInstance("首页"));
         mFragments.add(new SystemFragment());
         mFragments.add(new ProjectsFragment().newInstance("项目"));
         mFragments.add(new SquareFragment().newInstance("广场"));

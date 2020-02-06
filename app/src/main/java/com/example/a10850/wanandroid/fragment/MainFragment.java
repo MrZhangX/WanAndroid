@@ -1,38 +1,30 @@
 package com.example.a10850.wanandroid.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.a10850.wanandroid.R;
 import com.example.a10850.wanandroid.adapter.ContentListAdapter;
-import com.example.a10850.wanandroid.app.MyApplication;
 import com.example.a10850.wanandroid.constant.UrlString;
-import com.example.a10850.wanandroid.customview.CustomLoadMoreView;
 import com.example.a10850.wanandroid.entity.BannerBean;
 import com.example.a10850.wanandroid.entity.ContentBean;
 import com.example.a10850.wanandroid.entity.ContentListBean;
 import com.example.a10850.wanandroid.entity.ContentZDBean;
 import com.example.a10850.wanandroid.interfaces.ApiService;
 import com.example.a10850.wanandroid.utils.RetrofitUtil;
-import com.example.common.app.MyApp;
 import com.example.common.base.LazyLoadFragment;
+import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -43,15 +35,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import cn.bingoogolapple.bgabanner.BGABanner;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Url;
 
 
 /***
@@ -108,7 +97,6 @@ public class MainFragment extends LazyLoadFragment {
     protected void initView() {
         mAdapter = new ContentListAdapter(R.layout.home_contentlist_item, mList);
         mView = getLayoutInflater().inflate(R.layout.main_content_header, mMainContainer, false);
-//        mView = LayoutInflater.from(getActivity()).inflate(R.layout.main_content_header, (ViewGroup) mMainRv.getParent(), false);
         mMainBanner = (BGABanner) mView;
 
         mMainRv.setAdapter(mAdapter);
@@ -175,7 +163,7 @@ public class MainFragment extends LazyLoadFragment {
                                 mAdapter.addData(response.body().getData().getDatas());
                                 currentPage = response.body().getData().getCurPage();
                                 mRefreshLayout.finishRefresh(true);
-                                Log.e(TAG, "getCurPage: " + response.body().getData().getCurPage());
+                                Logger.d("getCurPage: " + response.body().getData().getCurPage());
                             }
 
                             @Override
@@ -195,63 +183,6 @@ public class MainFragment extends LazyLoadFragment {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 loadMoreData();
-            }
-        });
-
-        //上拉加载（设置这个监听就表示有上拉加载功能了）
-//        mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-//            @Override
-//            public void onLoadMoreRequested() {
-//                loadMoreData();
-//            }
-//        }, mMainRv);
-//        //自定义上拉加载view
-//        mAdapter.setLoadMoreView(new CustomLoadMoreView());
-//
-//        mAdapter.setUpFetchListener(new BaseQuickAdapter.UpFetchListener() {
-//            @Override
-//            public void onUpFetch() {
-//                startUpFetch();
-//            }
-//        });
-
-        mMainRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-//                switch (newState) {
-//                    case RecyclerView.SCROLL_STATE_DRAGGING:
-//                        Glide.with(getActivity()).resumeRequests();
-//                        break;
-//                    case RecyclerView.SCROLL_STATE_SETTLING:
-//                        Glide.with(getActivity()).pauseRequests();
-//                        break;
-//                    case RecyclerView.SCROLL_STATE_IDLE:
-//                        Glide.with(getActivity()).resumeRequests();
-//                        break;
-//                }
-            }
-
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-//                Log.e(TAG, "onScrolled: " + dy);
-//                boolean b = mMainRv.canScrollVertically(1);
-//                if (dy == 0 && !b)
-//                    mAdapter.setUpFetchEnable(true);
-
-//                Log.i(TAG, "--------------------------------------");
-//                if (mMainRv.canScrollVertically(1)) {
-//                    Log.i(TAG, "direction 1: true");
-//                } else {
-//                    Log.i(TAG, "direction 1: false");//滑动到底部
-//                }
-//                if (mMainRv.canScrollVertically(-1)) {
-//                    Log.i(TAG, "direction -1: true");
-//                } else {
-//                    Log.i(TAG, "direction -1: false");//滑动到顶部
-//                }
-
             }
         });
 
@@ -282,7 +213,7 @@ public class MainFragment extends LazyLoadFragment {
                             mAdapter.addData(response.body().getData().getDatas());
                             currentPage = response.body().getData().getCurPage();
                             mRefreshLayout.finishLoadMore(true);
-                            Log.e(TAG, "getCurPage: " + response.body().getData().getCurPage());
+                            Logger.d("getCurPage: " + response.body().getData().getCurPage());
                         }
 
                         @Override
@@ -370,87 +301,6 @@ public class MainFragment extends LazyLoadFragment {
             }
         });
     }
-
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        // TODO: inflate a fragment view
-//        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-//        unbinder = ButterKnife.bind(this, rootView);
-//        return rootView;
-//    }
-
-    //    private void startUpFetch() {
-////        count++;
-//        /**
-//         * set fetching on when start network request.
-//         */
-//        mAdapter.setUpFetching(true);
-//        /**
-//         * get data from internet.
-//         */
-//        mMainRv.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                RetrofitUtil.getInstance().getContentData(0).enqueue(new Callback<ContentListBean>() {
-//                    @Override
-//                    public void onResponse(Call<ContentListBean> call, Response<ContentListBean> response) {
-//                        Log.e(TAG, "onResponse: 上拉刷新");
-//                        List<ContentBean> datas = response.body().getData().getDatas();
-//                        currentPage = response.body().getData().getCurPage();
-//                        mAdapter.getData().clear();
-//                        mAdapter.addData(datas);
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<ContentListBean> call, Throwable t) {
-//
-//                    }
-//                });
-//                /**
-//                 * set fetching off when network request ends.
-//                 */
-//                mAdapter.setUpFetching(false);
-////                /**
-////                 * set fetch enable false when you don't need anymore.
-////                 */
-////                if (count > 0) {
-////                    mAdapter.setUpFetchEnable(false);
-////                }
-//            }
-//        }, 300);
-//    }
-//
-//
-//    /***
-//     * 上拉加载更多
-//     */
-//    private void loadMoreData() {
-//        mMainRv.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (currentPage >= total) {
-//                    //数据全部加载完毕
-//                    mAdapter.loadMoreEnd();
-//                } else {
-//                    //加载成功
-//                    RetrofitUtil.getInstance().getContentData(currentPage).enqueue(new Callback<ContentListBean>() {
-//                        @Override
-//                        public void onResponse(Call<ContentListBean> call, Response<ContentListBean> response) {
-//                            mAdapter.addData(response.body().getData().getDatas());
-//                            currentPage = response.body().getData().getCurPage();
-//                            mAdapter.loadMoreComplete();
-//                            Log.e(TAG, "getCurPage: " + response.body().getData().getCurPage());
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<ContentListBean> call, Throwable t) {
-//
-//                        }
-//                    });
-//                }
-//            }
-//        }, 1000);
-//    }
 
 
 }
