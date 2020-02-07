@@ -3,10 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/systembar"
+        layout="@layout/common_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/system_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/systembar">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/system_rv"

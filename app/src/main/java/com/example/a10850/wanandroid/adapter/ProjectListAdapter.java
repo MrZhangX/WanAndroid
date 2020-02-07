@@ -70,8 +70,6 @@ public class ProjectListAdapter extends BaseQuickAdapter<ProjectListBean.DataBea
 
         Drawable drawable = mContext.getResources().getDrawable(R.mipmap.user);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-//        drawable.setBounds(0, 0, 10, 10);
-
         TextView view = helper.getView(R.id.project_list_author);
         view.setCompoundDrawables(drawable, null, null, null);
 

@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical">
+    tools:context=".MainActivity">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/home_tab"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="3dp"
-        android:background="#ffffff"
-        android:fillViewport="false"
-        app:layout_scrollFlags="scroll"
-        app:tabGravity="fill"
-        app:tabIndicatorColor="#1afa29"
-        app:tabIndicatorFullWidth="false"
-        app:tabMaxWidth="0dp"
-        app:tabMode="fixed"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/s_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!--如果将ToolBar弄成include的话，需要重新实现一次滑动效果layout_scrollFlags-->
+        <include
+            android:id="@+id/homebar"
+            layout="@layout/common_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways" />
 
-        app:tabRippleColor="@android:color/transparent"
-        app:tabSelectedTextColor="#1afa29"
-        app:tabTextAppearance="@style/MyTabItemAppearance"
-        app:tabTextColor="#e6e6e6" />
+        <android.support.design.widget.TabLayout
+            android:id="@+id/home_tab"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="3dp"
+            android:background="#ffffff"
+            android:fillViewport="false"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="#1afa29"
+            app:tabIndicatorFullWidth="false"
+            app:tabMaxWidth="100dp"
+            app:tabMode="fixed"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabSelectedTextColor="#1afa29"
+            app:tabTextAppearance="@style/MyTabItemAppearance"
+            app:tabTextColor="#e6e6e6" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/home_vp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -5,6 +5,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.a10850.wanandroid.R;
 import com.example.a10850.wanandroid.entity.ProjectBean;
@@ -17,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,6 +39,10 @@ public class ProjectsFragment extends LazyLoadFragment {
     ViewPager mProjectVp;
     @BindView(R.id.project_tab)
     TabLayout mProjectTab;
+    @BindView(R.id.title)
+    TextView mTitle;
+
+    Unbinder unbinder;
 
     private String value;
 
@@ -55,6 +65,8 @@ public class ProjectsFragment extends LazyLoadFragment {
 
     @Override
     protected void initView() {
+        mTitle.setText("项目");
+
         mAdapter = new SubStatePagerAdapter(getFragmentManager());
 //        mProjectVp.setOffscreenPageLimit(mFragments.size());
         //1、将tablayout与viewpager关联起来
@@ -109,5 +121,19 @@ public class ProjectsFragment extends LazyLoadFragment {
         bundle.putString(PARAM, str);
         baseFragment.setArguments(bundle);
         return baseFragment;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }

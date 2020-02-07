@@ -7,6 +7,8 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.a10850.wanandroid.R;
 import com.example.a10850.wanandroid.adapter.SystemTreeAdapter;
@@ -39,6 +41,10 @@ public class SystemFragment extends LazyLoadFragment {
     SmartRefreshLayout mSystemRefresh;
 
     Unbinder unbinder;
+    @BindView(R.id.title)
+    TextView mTitle;
+    @BindView(R.id.search)
+    ImageView mSearch;
 
     private List<SystemTreeBean.DataBean> mList;
     private SystemTreeAdapter mAdapter;
@@ -55,6 +61,8 @@ public class SystemFragment extends LazyLoadFragment {
 
     @Override
     protected void initView() {
+        mTitle.setText("知识体系");
+
         mAdapter = new SystemTreeAdapter(R.layout.system_rv_item, mList);
         mSystemRv.setAdapter(mAdapter);
         mSystemRv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));

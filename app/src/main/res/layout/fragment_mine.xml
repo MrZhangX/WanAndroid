@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <include
+        android:id="@+id/minebar"
+        layout="@layout/common_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.example.a10850.wanandroid.customview.LSettingItem
+        android:clickable="true"
+        android:id="@+id/item_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftIcon="@drawable/heart_red"
+        app:leftText="导航" />
+
+    <com.example.a10850.wanandroid.customview.LSettingItem
+        android:id="@+id/item_net"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftIcon="@drawable/heart_red"
+        app:leftText="常用网站" />
+
+    <com.example.a10850.wanandroid.customview.LSettingItem
+        android:id="@+id/item_collect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftIcon="@drawable/heart_red"
+        app:leftText="我的收藏" />
+
+
+</LinearLayout>

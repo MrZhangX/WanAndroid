@@ -3,6 +3,7 @@ package com.example.a10850.wanandroid.interfaces;
 import com.example.a10850.wanandroid.entity.BannerBean;
 import com.example.a10850.wanandroid.entity.ContentListBean;
 import com.example.a10850.wanandroid.entity.ContentZDBean;
+import com.example.a10850.wanandroid.entity.NavBean;
 import com.example.a10850.wanandroid.entity.PersonBean;
 import com.example.a10850.wanandroid.entity.ProjectBean;
 import com.example.a10850.wanandroid.entity.ProjectListBean;
@@ -77,5 +78,9 @@ public interface ApiService {
     //最新项目
     @GET("article/listproject/{page}/json")
     Call<ProjectListBean> getProjectNewList(@Path("page") int page);
+
+    //导航
+    @GET("navi/json")
+    Call<NavBean> getNav();
 
 }

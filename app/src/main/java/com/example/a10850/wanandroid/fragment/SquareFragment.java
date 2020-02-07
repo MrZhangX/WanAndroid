@@ -30,7 +30,7 @@ public class SquareFragment extends LazyLoadFragment {
 
     @Override
     protected int initLayoutRes() {
-        return 0;
+        return R.layout.fragment_square;
     }
 
     @Override
@@ -56,11 +56,6 @@ public class SquareFragment extends LazyLoadFragment {
         return baseFragment;
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_mine, container, false);
-    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

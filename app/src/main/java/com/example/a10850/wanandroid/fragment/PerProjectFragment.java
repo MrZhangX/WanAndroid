@@ -3,14 +3,17 @@ package com.example.a10850.wanandroid.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.a10850.wanandroid.R;
 import com.example.a10850.wanandroid.adapter.ProjectListAdapter;
 import com.example.a10850.wanandroid.entity.ProjectListBean;
 import com.example.a10850.wanandroid.utils.RetrofitUtil;
 import com.example.common.base.LazyLoadFragment;
+import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -165,7 +168,6 @@ public class PerProjectFragment extends LazyLoadFragment {
     }
 
 
-
     @Override
     protected void loadData() {
 //        Logger.e("zxd" + page);
@@ -230,4 +232,12 @@ public class PerProjectFragment extends LazyLoadFragment {
         return type;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        MaterialHeader viewById = view.findViewById(R.id.rheader);
+//        viewById.setColorSchemeColors(R.color.blue);
+        //设置转圈的那个view颜色
+        viewById.setColorSchemeResources(R.color.main_color);
+    }
 }
