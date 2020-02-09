@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import q.rorbin.badgeview.QBadgeView;
 import q.rorbin.verticaltablayout.VerticalTabLayout;
 import q.rorbin.verticaltablayout.adapter.TabAdapter;
 import q.rorbin.verticaltablayout.widget.ITabView;
@@ -36,7 +37,9 @@ import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
 /***
  * 创建时间：2020/2/6 15:05
  * 创建人：10850
- * 功能描述：
+ * 功能描述：https://www.jianshu.com/p/a9010346453b
+ * 提交githup，去查看代码没有变化，原因是仓库中的代码只是提交到本地仓库，没有push到远程仓库。
+ * https://www.cnblogs.com/shiwei-bai/p/4991132.html
  */
 public class NavigationActivity extends BaseActivity {
 
@@ -88,6 +91,7 @@ public class NavigationActivity extends BaseActivity {
                         mTitles.add(data.get(i).getName());
                     }
 //                    mNavVt.addTab(new QTabView(geta).setTitle());
+
                     mAdapter = new TabAdapter() {
                         @Override
                         public int getCount() {

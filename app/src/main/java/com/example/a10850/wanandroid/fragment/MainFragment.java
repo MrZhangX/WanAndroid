@@ -1,5 +1,6 @@
 package com.example.a10850.wanandroid.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.a10850.wanandroid.R;
+import com.example.a10850.wanandroid.activity.WebActivity;
 import com.example.a10850.wanandroid.adapter.ContentListAdapter;
 import com.example.a10850.wanandroid.constant.UrlString;
 import com.example.a10850.wanandroid.entity.BannerBean;
@@ -115,7 +117,11 @@ public class MainFragment extends LazyLoadFragment {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Toast.makeText(getActivity(), mImages.size() + "-" + mMainBanner.getItemCount(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), mImages.size() + "-" + mMainBanner.getItemCount(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), WebActivity.class);
+                intent.putExtra("url", mAdapter.getData().get(position).getLink());
+                intent.putExtra("title", mAdapter.getData().get(position).getTitle());
+                startActivity(intent);
             }
         });
 

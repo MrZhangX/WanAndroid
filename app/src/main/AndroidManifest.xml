@@ -4,10 +4,14 @@
     package="com.example.a10850.wanandroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:name=".app.MyApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -22,6 +26,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.NavigationActivity" />
+        <activity
+            android:name=".activity.WebActivity"
+            android:hardwareAccelerated="false" />
     </application>
+
 
 </manifest>

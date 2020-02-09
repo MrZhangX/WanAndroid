@@ -1,0 +1,28 @@
+<!--自定义进度条背景颜色 https://www.cnblogs.com/changyiqiang/p/11398250.html
+查询:android progress设置进度条的颜色-->
+<!--https://blog.csdn.net/qq_37488573/article/details/83688862-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--  设置背景色（黑色）  -->
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="5dip" />
+            <solid android:color="@color/white" />
+            <!--<gradient-->
+            <!--android:endColor="#fff"-->
+            <!--android:startColor="#fff" />-->
+        </shape>
+    </item>
+
+    <!--  设置进度条颜色（白色）  -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="5dip" />
+                <gradient
+                    android:endColor="@color/green"
+                    android:startColor="#ffca12" />
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

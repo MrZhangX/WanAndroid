@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
@@ -11,6 +11,34 @@
 
     <style name="MyTabItemAppearance" parent="TextAppearance.AppCompat.Small">
         <item name="android:textAllCaps">false</item>
+    </style>
+
+
+    <style name="ToolbarTheme" parent="Theme.AppCompat.Light">
+        <!-- 设置 toolbar 溢出菜单的文字的颜色 -->
+        <item name="android:textColor">@android:color/white</item>
+        <!-- 设置toolbar 溢出菜单的字体大小-->
+        <item name="android:textSize">14sp</item>
+
+
+        <!--<item name="actionMenuTextColor">@android:color/white</item>-->
+
+        <!--返回或更多(app:showAsAction="never")的按钮颜色-->
+        <item name="colorControlNormal">@android:color/white</item>
+
+
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuTheme</item><!--设置弹出位置的主题-->
+        <!--<item name="android:paddingRight">-5dp</item>-->
+        <!--这个paddingRight属性可能会导致前面的icon显示不全-->
+    </style>
+
+    <!--toolbar 溢出菜单的popup样式-->
+    <style name="OverflowMenuTheme" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="android:overlapAnchor" tools:targetApi="lollipop">false</item>
+        <!-- 弹出层垂直方向上的偏移，即在竖直方向上距离Toolbar的距离，值为负则会盖住Toolbar -->
+        <item name="android:dropDownVerticalOffset">5dp</item>
+        <item name="android:dropDownHorizontalOffset">0dp</item>
+        <item name="android:popupBackground">@color/green</item>
     </style>
 
 </resources>
