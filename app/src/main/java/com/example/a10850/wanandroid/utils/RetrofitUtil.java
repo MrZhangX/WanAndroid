@@ -2,6 +2,7 @@ package com.example.a10850.wanandroid.utils;
 
 import com.example.a10850.wanandroid.constant.UrlString;
 import com.example.a10850.wanandroid.interfaces.ApiService;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -23,6 +24,7 @@ public class RetrofitUtil {
                     Retrofit retrofit = new Retrofit.Builder()
                             .baseUrl(UrlString.BASE_URL)
                             .addConverterFactory(GsonConverterFactory.create())
+                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                             .build();
                     apiService = retrofit.create(ApiService.class);
                 }

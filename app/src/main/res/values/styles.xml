@@ -41,4 +41,23 @@
         <item name="android:popupBackground">@color/green</item>
     </style>
 
+
+    <!-- TextInputLayout hint 提示的样式 -->
+    <style name="hintAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/holo_purple</item>
+    </style>
+
+    <!-- TextInputLayout 错误 提示的样式 -->
+    <style name="errorAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/holo_orange_light</item>
+    </style>
+
+    <!--editText样式，更改原来的颜色-->
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/green</item>
+        <item name="colorControlActivated">@color/purple</item>
+    </style>
+
 </resources>

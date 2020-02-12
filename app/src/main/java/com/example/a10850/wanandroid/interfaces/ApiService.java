@@ -8,12 +8,11 @@ import com.example.a10850.wanandroid.entity.PersonBean;
 import com.example.a10850.wanandroid.entity.ProjectBean;
 import com.example.a10850.wanandroid.entity.ProjectListBean;
 import com.example.a10850.wanandroid.entity.SystemTreeBean;
-import com.example.a10850.wanandroid.entity.UserBean;
+import com.example.a10850.wanandroid.entity.UsedWebBean;
 
 import java.util.Map;
 
 import io.reactivex.Observable;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
@@ -29,21 +28,6 @@ import retrofit2.http.Query;
  * 功能描述：
  */
 public interface ApiService {
-    @FormUrlEncoded
-    @POST("user/login")
-    Observable<UserBean> getLogin(@Field("username") String username, @Field("password") String password);
-
-    @FormUrlEncoded
-    @POST("user/register")
-    Observable<UserBean> getRegister(@FieldMap() Map<String, String> registerMap);
-
-    @FormUrlEncoded
-    @POST("user/login")
-    Call<ResponseBody> onLogin(@Field("username") String username, @Field("password") String password);
-
-    @FormUrlEncoded
-    @POST("user/login")
-    Observable<PersonBean> onLogin1(@Field("username") String username, @Field("password") String password);
 
     //开始
     @FormUrlEncoded
@@ -82,5 +66,9 @@ public interface ApiService {
     //导航
     @GET("navi/json")
     Call<NavBean> getNav();
+
+    //常用网站
+    @GET("friend/json")
+    Observable<UsedWebBean> getUsedWeb();
 
 }

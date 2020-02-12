@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a10850.wanandroid.fragment.HomeFragment;
-import com.example.a10850.wanandroid.fragment.MainFragment;
 import com.example.a10850.wanandroid.fragment.MineFragment;
 import com.example.a10850.wanandroid.fragment.ProjectsFragment;
 import com.example.a10850.wanandroid.fragment.SquareFragment;

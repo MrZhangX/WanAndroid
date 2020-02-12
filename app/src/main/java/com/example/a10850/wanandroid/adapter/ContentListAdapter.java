@@ -80,5 +80,9 @@ public class ContentListAdapter extends BaseQuickAdapter<ContentBean, BaseViewHo
             helper.getView(R.id.home_contentlist_tv1).setVisibility(View.VISIBLE);
         } else
             helper.getView(R.id.home_contentlist_tv1).setVisibility(View.GONE);
+
+        // TODO: 2020/2/12 爱心、分类的点击
+//        helper.addOnClickListener(R.id.home_contentlist_iv)
+//                .addOnClickListener(R.id.)
     }
 }

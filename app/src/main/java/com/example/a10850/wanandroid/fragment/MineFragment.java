@@ -9,18 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.a10850.wanandroid.R;
 import com.example.a10850.wanandroid.activity.NavigationActivity;
 import com.example.a10850.wanandroid.customview.LSettingItem;
+import com.example.a10850.wanandroid.ui.UsedWeb.UsedWebActivity;
 import com.example.common.base.LazyLoadFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /***
@@ -105,6 +103,14 @@ public class MineFragment extends LazyLoadFragment {
             @Override
             public void click(boolean isChecked) {
                 Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mItemNet.setmOnLSettingItemClick(new LSettingItem.OnLSettingItemClick() {
+            @Override
+            public void click(boolean isChecked) {
+                Intent intent = new Intent(getActivity(), UsedWebActivity.class);
                 startActivity(intent);
             }
         });

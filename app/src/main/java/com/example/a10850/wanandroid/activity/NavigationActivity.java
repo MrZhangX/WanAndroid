@@ -3,10 +3,11 @@ package com.example.a10850.wanandroid.activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import q.rorbin.badgeview.QBadgeView;
 import q.rorbin.verticaltablayout.VerticalTabLayout;
 import q.rorbin.verticaltablayout.adapter.TabAdapter;
 import q.rorbin.verticaltablayout.widget.ITabView;
@@ -40,6 +40,8 @@ import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
  * 功能描述：https://www.jianshu.com/p/a9010346453b
  * 提交githup，去查看代码没有变化，原因是仓库中的代码只是提交到本地仓库，没有push到远程仓库。
  * https://www.cnblogs.com/shiwei-bai/p/4991132.html
+ *
+ * https://www.jianshu.com/p/e2f54b5b648a这篇文章思路不错,将tbar边框有间隔的
  */
 public class NavigationActivity extends BaseActivity {
 
@@ -52,12 +54,13 @@ public class NavigationActivity extends BaseActivity {
     VerticalTabLayout mNavVt;
     @BindView(R.id.nav_rv)
     RecyclerView mNavRv;
+    @BindView(R.id.navbar)
+    Toolbar mCommonTbar;
 
 
     private List<String> mTitles;
     private TabAdapter mAdapter;
 
-    private List<NavBean.DataBean> mData;
     private CommonNavAdapter mNavAdapter;
 
     private LinearLayoutManager mLayout;
@@ -70,12 +73,34 @@ public class NavigationActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setSupportActionBar(mCommonTbar);
+        ActionBar actionBar = getSupportActionBar();
+        //显示返回箭头默认是不显示的
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        //显示左侧的返回箭头，并且返回箭头和title一直设置返回箭头才能显示
+//        actionBar.setDisplayShowHomeEnabled(true);
+//        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setDisplayUseLogoEnabled(false);
+        //显示标题
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setTitle("");
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void initData() {
         mTitles = new ArrayList<>();
-        mData = new ArrayList<>();
         loadData();
     }
 
@@ -162,8 +187,6 @@ public class NavigationActivity extends BaseActivity {
 
         mNavRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
-            private int pos;
-
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
@@ -189,16 +212,16 @@ public class NavigationActivity extends BaseActivity {
                                 int tabMinus = mTitles.size() - 1 - mNavVt.getSelectedTabPosition();
                                 int rvMinus = mLayout.getItemCount() - 1 - firstVisibleItemPosition;
 
-                                Log.i("zxd", "tabMinus: " + tabMinus + "-rvMinus:" + rvMinus);
-                                Log.i("zxd", "mNavVt: " + mNavVt.getSelectedTabPosition());
+//                                Log.i("zxd", "tabMinus: " + tabMinus + "-rvMinus:" + rvMinus);
+//                                Log.i("zxd", "mNavVt: " + mNavVt.getSelectedTabPosition());
                                 if (tabMinus > rvMinus)
                                     mLayout.scrollToPositionWithOffset(firstVisibleItemPosition, 0);
 
                             } else {
                                 mNavVt.setTabSelected(firstVisibleItemPosition);
                             }
-                        Log.i("zxd", "onScrollStateChanged: " + firstVisibleItemPosition);
-                        Log.i("zxd", "firstCompletelyVisibleItemPosition: " + firstCompletelyVisibleItemPosition);
+//                        Log.i("zxd", "onScrollStateChanged: " + firstVisibleItemPosition);
+//                        Log.i("zxd", "firstCompletelyVisibleItemPosition: " + firstCompletelyVisibleItemPosition);
 
 
 //                            mNavVt.setTabSelected(pos);

@@ -7,11 +7,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -56,6 +54,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * 可能原因1:轮播图的问题，应该不是本身的问题
  * 可能原因2:轮播图与BaseRecyclerViewAdapterHelper不兼容,测试使用iv试试，测试结果也不行
  * mVpMain.setOffscreenPageLimit(mFragments.size());可能是这个的原因。暂时没问题了，需要跟踪
+ * 是getLayoutInflater填充的布局，在fragment切换时destroyview，切回又重新创建了VIEW，填充布局没有重新加入
  */
 public class MainFragment extends LazyLoadFragment {
 

@@ -1,9 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".register.RegisterActivity">
+    tools:context=".ui.register.RegisterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:text="注册用户"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:text="用户注册才可以登录！" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_user_l"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:textColorHint="@color/green"
+        android:theme="@style/MyEditText"
+        app:counterEnabled="true"
+        app:counterMaxLength="15"
+        app:counterOverflowTextAppearance="@style/hintAppearance"
+        app:errorTextAppearance="@style/errorAppearance"
+        app:hintTextAppearance="@style/hintAppearance">
+
+        <EditText
+            android:id="@+id/register_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="用户名"
+            android:inputType="text" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_pwd_l"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColorHint="@color/green"
+        android:theme="@style/MyEditText"
+        app:errorTextAppearance="@style/errorAppearance"
+        app:hintTextAppearance="@style/hintAppearance"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/green">
+
+        <EditText
+            android:id="@+id/register_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="密码"
+            android:inputType="textPassword" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_repwd_l"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColorHint="@color/green"
+        android:theme="@style/MyEditText"
+        app:errorTextAppearance="@style/errorAppearance"
+        app:hintTextAppearance="@style/hintAppearance"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/green">
+
+        <EditText
+            android:id="@+id/register_repwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="再次输入密码"
+            android:inputType="textPassword" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/register_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/green"
+        android:text="注册"
+        android:textColor="@color/white" />
 
 </LinearLayout>

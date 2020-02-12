@@ -1,6 +1,5 @@
 package com.example.a10850.wanandroid.adapter;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import java.util.List;
 
 import mao.com.flexibleflowlayout.TagAdapter;
 import mao.com.flexibleflowlayout.TagFlowLayout;
-import q.rorbin.badgeview.QBadgeView;
 
 /***
  * 创建时间：2020/2/6 20:38

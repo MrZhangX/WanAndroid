@@ -9,9 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.a10850.wanandroid.R;
-import com.example.a10850.wanandroid.entity.ProjectBean;
 import com.example.common.adapter.SubPagerAdapter;
-import com.example.common.adapter.SubStatePagerAdapter;
 import com.example.common.base.BaseFragment;
 import com.example.common.base.LazyLoadFragment;
 
