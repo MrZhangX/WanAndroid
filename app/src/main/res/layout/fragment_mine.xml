@@ -1,37 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/white">
 
-    <include
-        android:id="@+id/minebar"
-        layout="@layout/common_toolbar"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:background="#E5E5E5"
+        android:orientation="vertical">
 
-    <com.example.a10850.wanandroid.customview.LSettingItem
-        android:clickable="true"
-        android:id="@+id/item_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:leftIcon="@drawable/heart_red"
-        app:leftText="导航" />
+        <include
+            android:id="@+id/minebar"
+            layout="@layout/common_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <com.example.a10850.wanandroid.customview.LSettingItem
-        android:id="@+id/item_net"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:leftIcon="@drawable/heart_red"
-        app:leftText="常用网站" />
+        <RelativeLayout
+            android:background="@drawable/mine_bg"
+            android:id="@+id/user_container"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginBottom="@dimen/dp_4">
 
-    <com.example.a10850.wanandroid.customview.LSettingItem
-        android:id="@+id/item_collect"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:leftIcon="@drawable/heart_red"
-        app:leftText="我的收藏" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/logo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:src="@drawable/logo"
+                app:civ_border_color="@color/qcgreen"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:id="@+id/user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_toRightOf="@+id/logo"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="@dimen/dp_10"
+                android:text="请登录"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/user_infor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/user"
+                android:layout_alignBottom="@+id/logo"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_toRightOf="@+id/logo"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="@dimen/dp_10"
+                android:text="等级    排名" />
+
+        </RelativeLayout>
+
+        <com.example.a10850.wanandroid.customview.LSettingItem
+            android:id="@+id/item_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:leftIcon="@mipmap/boke"
+            app:leftText="导航" />
+
+        <com.example.a10850.wanandroid.customview.LSettingItem
+            android:id="@+id/item_net"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:leftIcon="@mipmap/boke"
+            app:leftText="常用网站" />
+
+        <com.example.a10850.wanandroid.customview.LSettingItem
+            android:id="@+id/item_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:leftIcon="@mipmap/boke"
+            app:leftText="问答" />
+
+        <com.example.a10850.wanandroid.customview.LSettingItem
+            android:id="@+id/item_offacc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:leftIcon="@mipmap/boke"
+            app:leftText="公众号" />
 
 
-</LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@drawable/home_contentlist_item_bg_shape"
+    android:paddingLeft="1.5dp"
+    android:paddingTop="1.5dp"
+    android:paddingRight="3dp"
+    android:paddingBottom="1.5dp"
+    android:layout_margin="@dimen/dp_4">
+
+    <TextView
+        android:id="@+id/cw_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_4"
+        android:paddingBottom="@dimen/dp_10"
+        android:text="简书" />
+
+    <TextView
+        android:id="@+id/cw_tv_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cw_tv_title"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:padding="@dimen/dp_4"
+        android:text="https://www.jianshu.com" />
+
+    <ImageView
+        android:id="@+id/cw_iv_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/dp_4"
+        android:src="@mipmap/edit" />
+
+
+</RelativeLayout>

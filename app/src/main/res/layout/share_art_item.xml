@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="1.5dp"
+    android:paddingTop="1.5dp"
+    android:paddingRight="3dp"
+    android:paddingBottom="1.5dp">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_contentlist_item_bg_shape">
+
+        <LinearLayout
+            android:id="@+id/home_contentlist_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/home_contentlist_tv1"
+                android:layout_width="35dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/home_contentlist_item_shape"
+                android:gravity="center"
+                android:text="置顶"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/home_contentlist_tv2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/home_contentlist_item_shape"
+                android:gravity="center"
+                android:text="新"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/home_contentlist_tv3"
+                android:layout_width="35dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/home_contentlist_item_shape"
+                android:gravity="center"
+                android:text="问答"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/home_contentlist_tv31"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/home_contentlist_item_shape"
+                android:gravity="center"
+                android:text="公众号"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/home_contentlist_tv4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="分享人：逐梦少年" />
+
+            <TextView
+                android:id="@+id/home_contentlist_tv5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:gravity="right"
+                android:text="时间：13小时前" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/home_contentlist_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/home_contentlist_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:text="浅谈Java开发规范与开发细节(下)"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/home_contentlist_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/home_contentlist_title"
+            android:layout_alignLeft="@+id/home_contentlist_title"
+            android:layout_marginRight="5dp"
+            android:paddingBottom="3dp"
+            android:text="分类： 项目必备 / 开发规范" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/home_contentlist_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@+id/home_contentlist_category"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:paddingBottom="3dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/heart_gray" />
+
+    </RelativeLayout>
+
+</LinearLayout>

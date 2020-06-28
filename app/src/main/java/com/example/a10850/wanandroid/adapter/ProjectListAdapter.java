@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.widget.ImageView;
+import android.text.Html;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -12,6 +12,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.a10850.wanandroid.R;
 import com.example.a10850.wanandroid.entity.ProjectListBean;
+import com.example.a10850.wanandroid.widget.ZQImageViewRoundOval;
 
 import java.util.List;
 
@@ -50,10 +51,16 @@ public class ProjectListAdapter extends BaseQuickAdapter<ProjectListBean.DataBea
 
     @Override
     protected void convert(@NonNull BaseViewHolder helper, ProjectListBean.DataBean.DatasBean item) {
-        Glide.with(helper.getView(R.id.project_list_iv)).load(item.getEnvelopePic()).into((ImageView) helper.getView(R.id.project_list_iv));
+//        Glide.with(helper.getView(R.id.project_list_iv)).load(item.getEnvelopePic()).into((ImageView) helper.getView(R.id.project_list_iv));
+        //增加圆角
+        ZQImageViewRoundOval iv = helper.getView(R.id.project_list_iv);
+        iv.setType(ZQImageViewRoundOval.TYPE_ROUND);
+        iv.setRoundRadius(16);
+        Glide.with(mContext).load(item.getEnvelopePic()).into(iv);
+
         helper.setText(R.id.project_list_author, item.getAuthor())
                 .setText(R.id.project_list_title, item.getTitle())
-                .setText(R.id.project_list_desc, item.getDesc())
+                .setText(R.id.project_list_desc, Html.fromHtml(item.getDesc()).toString())
                 .setText(R.id.project_list_time, item.getNiceDate());
 
         if (item.isCollect())

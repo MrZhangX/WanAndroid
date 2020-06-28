@@ -3,9 +3,11 @@ package com.example.a10850.wanandroid.ui.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
@@ -16,20 +18,26 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.a10850.wanandroid.R;
+import com.example.a10850.wanandroid.entity.CoinBean;
 import com.example.a10850.wanandroid.entity.PersonBean;
 import com.example.a10850.wanandroid.ui.register.RegisterActivity;
+import com.example.a10850.wanandroid.utils.RetrofitUtil;
+import com.example.a10850.wanandroid.utils.SPUtils;
 import com.example.common.base.BaseMvpActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /***
  * 创建时间：2020/2/10 17:53
  * 创建人：10850
  * 功能描述：
  */
-
 public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements LoginContract.View {
 
     @BindView(R.id.et_username)
@@ -129,13 +137,45 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     }
 
     @Override
-    public void loginSuccess(PersonBean user) {
+    public void loginSuccess(final PersonBean user) {
         if (user.getData() == null && !TextUtils.isEmpty(user.getErrorMsg()))
-            Toast.makeText(this, "" + user.getErrorMsg(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, user.getErrorMsg(), Toast.LENGTH_SHORT).show();
         else {
             //Toast.makeText(this, "登录成功!", Toast.LENGTH_SHORT).show();
             // TODO: 2020/2/10 保存用户信息，界面finish
-            finish();
+            //需要增加登录积分和排名
+            final String username = user.getData().getUsername();
+            SPUtils.put(this, "username", username);
+            showLoading();
+            RetrofitUtil.getInstance().getCoin().subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<CoinBean>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onNext(CoinBean coinBean) {
+                            dismissLoading();
+                            Intent intent = new Intent("LOGIN");
+                            intent.putExtra("rank", coinBean.getData().getRank());
+                            intent.putExtra("level", coinBean.getData().getLevel());
+                            intent.putExtra("username", username);
+                            LocalBroadcastManager.getInstance(LoginActivity.this).sendBroadcast(intent);
+                            finish();
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Log.i("zxd", "onError: " + e.getMessage());
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
         }
     }
 

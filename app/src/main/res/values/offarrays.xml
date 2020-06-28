@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="off_acc_title">
+        <item>学海无涯</item>
+        <item>孜孜不倦</item>
+        <item>悬梁刺股</item>
+        <item>凿壁借光</item>
+        <item>秉烛达旦</item>
+        <item>笃学好古</item>
+        <item>牛角挂书</item>
+        <item>囊萤映雪</item>
+        <item>发奋图强</item>
+        <item>持之以恒</item>
+        <item>废寝忘食</item>
+        <item>夜以继日</item>
+        <item>好学不倦</item>
+        <item>闻鸡起舞</item>
+    </string-array>
+</resources>

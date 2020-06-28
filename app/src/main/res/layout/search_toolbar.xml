@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/qcgreen"
+    android:orientation="horizontal"
+    android:paddingLeft="5dp"
+    android:paddingRight="15dp">
+
+    <com.example.a10850.wanandroid.widget.ClearEditText
+        android:id="@+id/et_search"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:background="@drawable/search_bg"
+        android:drawableLeft="@mipmap/search"
+        android:drawablePadding="2dp"
+        android:hint="搜索关键字"
+        android:imeOptions="actionSearch"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/cancel_search"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="取消"
+        android:textColor="@color/white" />
+
+</LinearLayout>

@@ -205,7 +205,8 @@ public class NavigationActivity extends BaseActivity {
 
                         if (firstVisibleItemPosition != -1 && firstCompletelyVisibleItemPosition != -1)
                             if (firstCompletelyVisibleItemPosition > firstVisibleItemPosition) {
-                                mNavVt.setTabSelected(firstVisibleItemPosition);
+                                if (mNavVt != null)
+                                    mNavVt.setTabSelected(firstVisibleItemPosition);
 //                                mNavRv.scrollToPosition(firstVisibleItemPosition);
 
 //                                int tabMinus = mTitles.size() - 1 - firstVisibleItemPosition;

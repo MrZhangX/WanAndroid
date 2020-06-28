@@ -1,5 +1,6 @@
 package com.example.a10850.wanandroid.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -10,11 +11,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.a10850.wanandroid.R;
 import com.example.a10850.wanandroid.adapter.SystemTreeAdapter;
 import com.example.a10850.wanandroid.entity.SystemTreeBean;
+import com.example.a10850.wanandroid.ui.search.SearchActivity;
+import com.example.a10850.wanandroid.ui.system.SystemActivity;
 import com.example.a10850.wanandroid.utils.RetrofitUtil;
 import com.example.common.base.LazyLoadFragment;
+import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.ArrayList;
@@ -46,8 +51,14 @@ public class SystemFragment extends LazyLoadFragment {
     @BindView(R.id.search)
     ImageView mSearch;
 
+    @BindView(R.id.srheader)
+    MaterialHeader mSrlHeader;
+
     private List<SystemTreeBean.DataBean> mList;
     private SystemTreeAdapter mAdapter;
+    //子页面-标题集合
+    private List<String> mStrings;
+    private List<Integer> mIds;
 
     @Override
     protected int initLayoutRes() {
@@ -57,15 +68,48 @@ public class SystemFragment extends LazyLoadFragment {
     @Override
     protected void initData() {
         mList = new ArrayList<>();
+        mStrings = new ArrayList<>();
+        mIds = new ArrayList<>();
     }
 
     @Override
     protected void initView() {
+        mSrlHeader.setColorSchemeResources(R.color.qcgreen);
+        mSystemRefresh.setEnableLoadMore(false);
+
         mTitle.setText("知识体系");
+
+        mSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                intent.putExtra("type", "sys");
+                startActivity(intent);
+            }
+        });
 
         mAdapter = new SystemTreeAdapter(R.layout.system_rv_item, mList);
         mSystemRv.setAdapter(mAdapter);
         mSystemRv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                if (mStrings.size() > 0)
+                    mStrings.clear();
+                Intent intent = new Intent(getActivity(), SystemActivity.class);
+                intent.putExtra("title", mList.get(position).getName());
+                intent.putExtra("cid", mList.get(position).getCourseId());//这个不对
+                for (int i = 0; i < mList.get(position).getChildren().size(); i++) {
+                    mStrings.add(mList.get(position).getChildren().get(i).getName());
+                    mIds.add(mList.get(position).getChildren().get(i).getId());
+                }
+                intent.putStringArrayListExtra("list", (ArrayList<String>) mStrings);
+                intent.putIntegerArrayListExtra("ids", (ArrayList<Integer>) mIds);
+                startActivity(intent);
+            }
+        });
+
     }
 
 

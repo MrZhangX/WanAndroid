@@ -4,19 +4,19 @@
 
     <item
         android:id="@+id/web_item1"
-        android:icon="@mipmap/user"
+        android:icon="@mipmap/copy"
         android:title="复制链接"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/web_item2"
-        android:icon="@drawable/arrow_left"
+        android:icon="@mipmap/refresh"
         android:title="刷新页面"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/web_item3"
-        android:icon="@mipmap/user"
+        android:icon="@mipmap/browser_open"
         android:title="浏览器打开"
         app:showAsAction="never" />
 </menu>

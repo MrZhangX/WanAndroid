@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="3dp"
+    android:background="@drawable/corners_item_bg"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/list_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@mipmap/user"
+        android:drawablePadding="2dp"
+        android:text="crossoverJie" />
+
+    <ImageView
+        android:id="@+id/list_collect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/heart_gray" />
+
+    <TextView
+        android:id="@+id/list_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list_author"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:maxLines="1"
+        android:text="线程池没你想的那么简单"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/list_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:drawableLeft="@mipmap/time"
+        android:drawablePadding="3dp"
+        android:padding="4dp"
+        android:text="2019-05-22 00:04" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_4">
+
+        <TextView
+            android:id="@+id/list_link1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="基础知识"
+            android:textColor="@android:color/holo_blue_dark" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@android:color/holo_blue_dark" />
+
+        <TextView
+            android:id="@+id/list_link2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="线程池"
+            android:textColor="@android:color/holo_blue_dark" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

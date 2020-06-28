@@ -1,6 +1,7 @@
 package com.example.a10850.wanandroid.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,7 +9,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.a10850.wanandroid.R;
+import com.example.a10850.wanandroid.activity.WebActivity;
 import com.example.a10850.wanandroid.adapter.ProjectListAdapter;
 import com.example.a10850.wanandroid.entity.ProjectListBean;
 import com.example.a10850.wanandroid.utils.RetrofitUtil;
@@ -76,6 +79,15 @@ public class PerProjectFragment extends LazyLoadFragment {
         mAdapter = new ProjectListAdapter(R.layout.project_list_item, mData, getActivity(), type);
         mProjectRv.setAdapter(mAdapter);
         mProjectRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(getActivity(), WebActivity.class);
+                intent.putExtra("url", mData.get(position).getLink());
+                intent.putExtra("title", mData.get(position).getTitle());
+                startActivity(intent);
+            }
+        });
 
         mProjectRefresh.setEnableRefresh(true);
         mProjectRefresh.setEnableLoadMore(true);
@@ -238,6 +250,6 @@ public class PerProjectFragment extends LazyLoadFragment {
         MaterialHeader viewById = view.findViewById(R.id.rheader);
 //        viewById.setColorSchemeColors(R.color.blue);
         //设置转圈的那个view颜色
-        viewById.setColorSchemeResources(R.color.main_color);
+        viewById.setColorSchemeResources(R.color.qcgreen);
     }
 }

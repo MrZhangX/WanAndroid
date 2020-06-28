@@ -106,10 +106,19 @@ public class WebActivity extends BaseActivity {
         mWeb.setLayerType(View.LAYER_TYPE_SOFTWARE, null);//解决白屏问题
         mWeb.setNetworkAvailable(true);
 
-        if (getIntent().getStringExtra("url").equals("http://gk.link/a/103Ei"))
-            mWeb.loadUrl("https://market.geekbang.org/activity/channelcoupon/16?utm_source=web&utm_medium=wananzhuo&utm_campaign=changweiliuliang&utm_term=zhanghongyang003&utm_content=0530");
-        else
-            mWeb.loadUrl(getIntent().getStringExtra("url"));
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (getIntent().getStringExtra("url").equals("http://gk.link/a/103Ei"))
+                    mWeb.loadUrl("https://market.geekbang.org/activity/channelcoupon/16?utm_source=web&utm_medium=wananzhuo&utm_campaign=changweiliuliang&utm_term=zhanghongyang003&utm_content=0530");
+                else
+                    mWeb.loadUrl(getIntent().getStringExtra("url"));
+            }
+        });
+//        if (getIntent().getStringExtra("url").equals("http://gk.link/a/103Ei"))
+//            mWeb.loadUrl("https://market.geekbang.org/activity/channelcoupon/16?utm_source=web&utm_medium=wananzhuo&utm_campaign=changweiliuliang&utm_term=zhanghongyang003&utm_content=0530");
+//        else
+//            mWeb.loadUrl(getIntent().getStringExtra("url"));
 
         //设置WebChromeClient类
         mWeb.setWebChromeClient(new WebChromeClient() {
@@ -239,11 +248,6 @@ public class WebActivity extends BaseActivity {
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 Toast.makeText(WebActivity.this, "errorCode:" + errorCode, Toast.LENGTH_SHORT).show();
-//                switch (errorCode) {
-//                    case HttpStatus.SC_NOT_FOUND:
-//                        view.loadUrl("file:///android_assets/error_handle.html");
-//                        break;
-//                }
             }
 
             @Override
@@ -428,6 +432,9 @@ public class WebActivity extends BaseActivity {
         webSettings.setAllowUniversalAccessFromFileURLs(true);
 
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+
+        webSettings.setBlockNetworkImage(false);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             // 用户是否需要通过手势播放媒体(不会自动播放)，默认值 true

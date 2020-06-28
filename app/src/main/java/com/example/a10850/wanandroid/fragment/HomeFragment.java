@@ -1,5 +1,6 @@
 package com.example.a10850.wanandroid.fragment;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -7,8 +8,10 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.a10850.wanandroid.R;
+import com.example.a10850.wanandroid.ui.search.SearchActivity;
 import com.example.common.adapter.SubPagerAdapter;
 import com.example.common.base.BaseFragment;
 import com.example.common.base.LazyLoadFragment;
@@ -33,6 +36,9 @@ public class HomeFragment extends LazyLoadFragment {
     ViewPager mHomeVp;
 
     Unbinder unbinder;
+
+    @BindView(R.id.search)
+    ImageView mSearch;
 
     private List<String> mTitles;
     private List<BaseFragment> mFragments;
@@ -77,6 +83,14 @@ public class HomeFragment extends LazyLoadFragment {
         for (int i = 0; i < mTitles.size(); i++) {
             mHomeTab.addTab(mHomeTab.newTab().setText(mTitles.get(i)));
         }
+
+        mSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

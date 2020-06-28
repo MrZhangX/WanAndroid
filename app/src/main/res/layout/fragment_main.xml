@@ -9,11 +9,12 @@
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srlAccentColor="#00000000"
+        app:srlAccentColor="@color/qcgreen"
         app:srlEnablePreviewInEditMode="true"
-        app:srlPrimaryColor="#00000000">
+        app:srlPrimaryColor="@color/qcgreen">
 
-        <com.scwang.smartrefresh.header.TaurusHeader
+        <com.scwang.smartrefresh.header.MaterialHeader
+            android:id="@+id/srlheader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -21,7 +22,7 @@
             android:id="@+id/main_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#fff"
+            android:background="#E5E5E5"
             android:overScrollMode="never" />
 
         <com.scwang.smartrefresh.header.TaurusHeader

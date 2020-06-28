@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:name=".app.MyApplication"
         android:allowBackup="true"
@@ -18,10 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="screenSize|orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -29,17 +30,31 @@
         <activity
             android:name=".activity.WebActivity"
             android:hardwareAccelerated="true" />
-
         <activity android:name=".ui.login.LoginActivity">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
 
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.UsedWeb.UsedWebActivity" />
-    </application>
+        <activity android:name=".ui.system.SystemActivity" />
+        <activity android:name=".ui.search.SearchActivity" />
+        <activity android:name=".ui.offacc.OffAccActivity" />
+        <activity android:name=".ui.offacc.list.OffAccListActivity" />
+        <activity android:name=".ui.square.SquareShareActivity" />
+        <activity android:name=".TestCookieActivity">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.question.QuestionActivity" />
+        <activity android:name=".ui.user.MyAllActivity"></activity>
+    </application>
 
 </manifest>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/del_tv"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_margin="@dimen/dp_10"
+    android:background="@drawable/pop_window_bg"
+    android:gravity="center"
+    android:letterSpacing="0.7"
+    android:text="删除"
+    android:textSize="16sp"
+    android:textStyle="bold">
+
+</TextView>

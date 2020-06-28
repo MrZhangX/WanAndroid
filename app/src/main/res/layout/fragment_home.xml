@@ -25,16 +25,15 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="3dp"
             android:background="#ffffff"
             android:fillViewport="false"
             app:tabGravity="fill"
-            app:tabIndicatorColor="#1afa29"
+            app:tabIndicatorColor="@color/qcgreen"
             app:tabIndicatorFullWidth="false"
             app:tabMaxWidth="100dp"
             app:tabMode="fixed"
             app:tabRippleColor="@android:color/transparent"
-            app:tabSelectedTextColor="#1afa29"
+            app:tabSelectedTextColor="@color/qcgreen"
             app:tabTextAppearance="@style/MyTabItemAppearance"
             app:tabTextColor="#e6e6e6" />
 

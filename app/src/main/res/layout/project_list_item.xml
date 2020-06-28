@@ -5,11 +5,22 @@
     android:layout_margin="3dp"
     android:background="@drawable/corners_item_bg">
 
-    <ImageView
+    <!--<ImageView-->
+    <!--android:id="@+id/project_list_iv"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="160dp"-->
+    <!--android:padding="3dp"-->
+    <!--android:scaleType="fitXY" />-->
+
+    <com.example.a10850.wanandroid.widget.ZQImageViewRoundOval
         android:id="@+id/project_list_iv"
         android:layout_width="100dp"
-        android:layout_height="160dp"
-        android:padding="3dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="3dp"
+        android:gravity="center"
         android:scaleType="fitXY" />
 
     <LinearLayout

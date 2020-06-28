@@ -1,6 +1,7 @@
 package com.example.a10850.wanandroid.fragment;
 
 import android.content.Intent;
+import android.graphics.Outline;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -8,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewOutlineProvider;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -25,6 +27,7 @@ import com.example.a10850.wanandroid.interfaces.ApiService;
 import com.example.a10850.wanandroid.utils.RetrofitUtil;
 import com.example.common.base.LazyLoadFragment;
 import com.orhanobut.logger.Logger;
+import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -77,11 +80,15 @@ public class MainFragment extends LazyLoadFragment {
 
     Handler mHandler = new Handler();
     private List<String> mImages;
+    private List<BannerBean.DataBean> mBannerList;
 
     //列表内容
     private ContentListAdapter mAdapter;
     private List<ContentBean> mList;
     private View mView;
+
+    @BindView(R.id.srlheader)
+    MaterialHeader mSrlHeader;
 
     @Override
     protected int initLayoutRes() {
@@ -92,10 +99,13 @@ public class MainFragment extends LazyLoadFragment {
     protected void initData() {
         mList = new ArrayList<>();
         mImages = new ArrayList<>();
+        mBannerList = new ArrayList<>();
     }
 
     @Override
     protected void initView() {
+        mSrlHeader.setColorSchemeResources(R.color.qcgreen);
+
         mAdapter = new ContentListAdapter(R.layout.home_contentlist_item, mList);
         mView = getLayoutInflater().inflate(R.layout.main_content_header, mMainContainer, false);
         mMainBanner = (BGABanner) mView;
@@ -107,11 +117,32 @@ public class MainFragment extends LazyLoadFragment {
         mMainBanner.setAdapter(new BGABanner.Adapter<ImageView, String>() {
             @Override
             public void fillBannerItem(BGABanner banner, ImageView itemView, @Nullable String model, int position) {
+                //设置圆角
+                itemView.setOutlineProvider(new ViewOutlineProvider() {
+
+                    @Override
+                    public void getOutline(View view, Outline outline) {
+                        outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), 15);
+                    }
+                });
+                itemView.setClipToOutline(true);
+                //设置图片
                 Glide.with(getActivity())
                         .load(model)
                         .into(itemView);
             }
         });
+
+        mMainBanner.setDelegate(new BGABanner.Delegate<ImageView, String>() {
+            @Override
+            public void onBannerItemClick(BGABanner banner, ImageView itemView, String model, int position) {
+                Intent intent = new Intent(getActivity(), WebActivity.class);
+                intent.putExtra("url", mBannerList.get(position).getUrl());
+                intent.putExtra("title", mBannerList.get(position).getTitle());
+                startActivity(intent);
+            }
+        });
+
 
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -256,6 +287,7 @@ public class MainFragment extends LazyLoadFragment {
                     @Override
                     public void onResponse(Call<BannerBean> call, Response<BannerBean> response) {
                         List<BannerBean.DataBean> data = response.body().getData();
+                        mBannerList = data;
                         for (int i = 0; i < data.size(); i++)
                             mImages.add(data.get(i).getImagePath());
                         mMainBanner.setData(Arrays.asList(mImages.get(0), mImages.get(1), mImages.get(2), mImages.get(3)), null);

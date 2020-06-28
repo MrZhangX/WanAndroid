@@ -23,11 +23,11 @@
             android:layout_height="40dp"
             android:background="#ffffff"
             android:fillViewport="false"
-            app:tabIndicatorColor="#1afa29"
+            app:tabIndicatorColor="@color/qcgreen"
             app:tabIndicatorFullWidth="false"
             app:tabMode="scrollable"
             app:tabRippleColor="@android:color/transparent"
-            app:tabSelectedTextColor="#1afa29"
+            app:tabSelectedTextColor="@color/qcgreen"
             app:tabTextAppearance="@style/MyTabItemAppearance"
             app:tabTextColor="#e6e6e6" />
 

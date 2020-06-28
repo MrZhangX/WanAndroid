@@ -17,16 +17,17 @@
         android:id="@+id/tab_main"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        app:tabRippleColor = "@android:color/transparent"
-
         android:background="#ffffff"
-        android:fillViewport="false"
+
+        android:fillViewport="true"
+        app:tabGravity="fill"
         app:layout_scrollFlags="scroll"
-        app:tabIndicatorColor="#1afa29"
+        app:tabIndicatorColor="#10D5BA"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="0dp"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="#1afa29"
+        app:tabMode="fixed"
+        app:tabRippleColor="@android:color/transparent"
+        app:tabSelectedTextColor="#10D5BA"
         app:tabTextAppearance="@style/MyTabItemAppearance"
         app:tabTextColor="#e6e6e6" />
 </LinearLayout>

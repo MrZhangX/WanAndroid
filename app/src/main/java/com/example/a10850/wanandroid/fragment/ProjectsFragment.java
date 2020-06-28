@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a10850.wanandroid.R;
@@ -41,8 +42,11 @@ public class ProjectsFragment extends LazyLoadFragment {
     TabLayout mProjectTab;
     @BindView(R.id.title)
     TextView mTitle;
+    @BindView(R.id.search)
+    ImageView mSearch;
 
     Unbinder unbinder;
+
 
     private String value;
 
@@ -66,6 +70,7 @@ public class ProjectsFragment extends LazyLoadFragment {
     @Override
     protected void initView() {
         mTitle.setText("项目");
+        mSearch.setVisibility(View.GONE);
 
         mAdapter = new SubStatePagerAdapter(getFragmentManager());
 //        mProjectVp.setOffscreenPageLimit(mFragments.size());

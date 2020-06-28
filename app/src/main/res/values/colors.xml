@@ -3,4 +3,14 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="qcgreen">#10D5BA</color>
+
+
+    <color name="colorBackground">#EEEEEE</color>
+    <color name="colorTrans">#00000000</color>
+    <color name="viewBackground">@android:color/white</color>
+    <color name="font_hint" >#9B9999</color>
+    <color name="textColorPrimary">#616161</color>
+    <color name="item_divider_color">#FFEDEDED</color>
 </resources>

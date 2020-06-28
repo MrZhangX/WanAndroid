@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,13 +14,20 @@
         android:id="@+id/system_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/systembar">
+        android:layout_below="@+id/systembar"
+        app:srlAccentColor="@color/qcgreen"
+        app:srlPrimaryColor="@color/qcgreen">
+
+        <com.scwang.smartrefresh.header.MaterialHeader
+            android:id="@+id/srheader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/system_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#EDEDED"
+            android:background="#E5E5E5"
             android:overScrollMode="never" />
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>

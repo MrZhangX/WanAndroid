@@ -2,6 +2,7 @@ package com.example.a10850.wanandroid.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -43,7 +44,7 @@ public class ContentListAdapter extends BaseQuickAdapter<ContentBean, BaseViewHo
             helper.setText(R.id.home_contentlist_tv4, "作者：" + item.getAuthor());
         //时间+标题
         helper.setText(R.id.home_contentlist_tv5, "时间：" + item.getNiceDate());
-        helper.setText(R.id.home_contentlist_title, item.getTitle());
+        helper.setText(R.id.home_contentlist_title, Html.fromHtml(item.getTitle()).toString());
         //收藏
         if (item.isCollect()) {
             helper.setImageResource(R.id.home_contentlist_iv, R.drawable.heart_red);

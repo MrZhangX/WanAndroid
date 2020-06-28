@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +18,7 @@ import com.example.a10850.wanandroid.fragment.SquareFragment;
 import com.example.a10850.wanandroid.fragment.SystemFragment;
 import com.example.common.adapter.SubPagerAdapter;
 import com.example.common.base.BaseFragment;
+import com.example.common.widget.StatusBarCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
+        StatusBarCompat.setStatusBarColor(this, Color.parseColor("#10D5BA"));
         initFragment();
         initViewPager();
     }
@@ -110,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                new AlertDialog.Builder(MainActivity.this)
+                /*new AlertDialog.Builder(MainActivity.this)
                         .setMessage("再次选中，显示对话框！")
-                        .show();
+                        .show();*/
             }
         });
     }
@@ -123,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
     private void initFragment() {
         mFragments = new ArrayList<>();
         mFragments.add(new HomeFragment());
-//        mFragments.add(new MainFragment().newInstance("首页"));
         mFragments.add(new SystemFragment());
         mFragments.add(new ProjectsFragment().newInstance("项目"));
         mFragments.add(new SquareFragment().newInstance("广场"));
@@ -172,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView img_title = view.findViewById(R.id.tab_image);
         if (selected) {
             img_title.setImageResource(tabIconSelected[tab.getPosition()]);
-            txtTitle.setTextColor(Color.parseColor("#03ce97"));
+            txtTitle.setTextColor(Color.parseColor("#10D5BA"));
         } else {
             img_title.setImageResource(tabIcons[tab.getPosition()]);
             txtTitle.setTextColor(Color.parseColor("#333333"));
